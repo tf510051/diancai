@@ -1,0 +1,40 @@
+/* pages/menus/menus.wxss */
+.swiper image {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/*item-list*/
+.item-list{
+  
+}
+.pro-item{
+  overflow: hidden;
+  padding: 20rpx;
+}
+.pro-logo{
+  float: left;
+  width: 190rpx;
+  height: 190rpx;
+}
+.pro-body{
+  margin-left: 200rpx;
+}
+.pro-title{
+  color: #212121;
+  font-size: 34rpx;
+  line-height: 1;
+}
+.pro-desc{
+  color: #9a9a9a;
+  font-size: 32rpx;
+  line-height: 1.2;
+}
+.pro-footer{
+  overflow: hidden;
+}
+.btn-detail{
+  float: right;
+  width: 200 rpx;
+}

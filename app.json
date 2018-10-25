@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/menus/menus"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor":"#2e6e86",
+    "navigationBarTitleText": "今日菜单",
+    "navigationBarTextStyle":"black"
+  }
+}

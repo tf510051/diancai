@@ -1,0 +1,24 @@
+<!--pages/menus/menus.wxml-->
+<swiper indicator-dots="{{indicatorDots}}" circular='true' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="bindchange" style="height:{{imgheights[current]}}rpx;">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" class=".itemimage" style="height:{{imgheights[current]}}rpx;width:{{imgwidth}}rpx;" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='item-list'>
+  <view class='pro-item' wx:for="{{proList}}"> 
+    <image class='pro-logo' src='{{item.pic}}'></image>
+    <view class='pro-body'>
+      <view class='pro-title'>{{item.name}}</view>
+      <text class='pro-desc'>{{item.type}} </text>
+      
+      <button  type="primary" class='btn-detail'>详情</button>
+     
+      
+    
+    </view>
+  
+  </view>
+
+</view>
