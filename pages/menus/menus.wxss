@@ -31,10 +31,7 @@
   font-size: 32rpx;
   line-height: 1.2;
 }
-.pro-footer{
-  overflow: hidden;
-}
+
 .btn-detail{
-  float: right;
-  width: 200 rpx;
+  float: right; 
 }

@@ -1,10 +1,10 @@
 // pages/menus/menus.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    canteenid:'',
     proList:[],
     imgUrls: [
       '/images/sw1.jpg',
@@ -22,26 +22,28 @@ Page({
     //默认
     current: 0,
 
-    imageLoad: function (e) {//获取图片真实宽度  
-      var imgwidth = e.detail.width,
-        imgheight = e.detail.height,
-        //宽高比  
-      ratio = imgwidth / imgheight;
-      console.log(imgwidth, imgheight)
-      //计算的高度值  
-      var viewHeight = 750 / ratio;
-      var imgheight = viewHeight;
-      var imgheights = this.data.imgheights;
-      //把每一张图片的对应的高度记录到数组里  
-      imgheights.push(imgheight)
-     // imgheights[e.target.dataset.id] = imgheight;
-      this.setData({
-        imgheights: imgheights
-      })
-    },
-    bindchange: function (e) {
-      // console.log(e.detail.current)
-      this.setData({ current: e.detail.current })
+    
+
+    // imageLoad: function (e) {//获取图片真实宽度  
+    //   var imgwidth = e.detail.width,
+    //     imgheight = e.detail.height,
+    //     //宽高比  
+    //   ratio = imgwidth / imgheight;
+    //   console.log(imgwidth, imgheight)
+    //   //计算的高度值  
+    //   var viewHeight = 750 / ratio;
+    //   var imgheight = viewHeight;
+    //   var imgheights = this.data.imgheights;
+    //   //把每一张图片的对应的高度记录到数组里  
+    //   imgheights.push(imgheight)
+    //  // imgheights[e.target.dataset.id] = imgheight;
+    //   this.setData({
+    //     imgheights: imgheights
+    //   })
+    // },
+    bindchange: function () {
+      //  console.log(e.detail.current)
+      // this.setData({ current: e.detail.current })
     }
 
   },
@@ -49,25 +51,33 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    this.getProList();
+  onLoad: function (options) { 
+    var id = options.id;
+    this.getProList(id);
 
   },
-  getProList:function(){
+  getProList:function(id){
     var self=this;
 
     wx.request({
-      url: 'https://gwzs.hn.189.cn/union/cookbook/today/canteen/1', //仅为示例，并非真实的接口地址
+      url: 'https://gwzs.hn.189.cn/union/cookbook/today/canteen/'+id, 
       method:'GET',     
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
-        var resdata = res.data;
+        var message = res.data.message;
+        let list=res.data.data;
+        if (message=='1'){
+          list.forEach((item) => {           
+            // var array = wx.arrayBufferToBase64(item.pic);           
+            // var base64 = wx.base64ToArrayBuffer(array); 
+            item.pic = 'data:image/png;base64,' + item.pic
+          })
+        }        
         
         self.setData({
-          proList:res.data.data,
+          proList:res.data.data
         })
 
       }

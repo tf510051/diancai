@@ -1,0 +1,19 @@
+
+
+/*l_auto:占用剩下的*/
+.l_auto {
+  flex: 1;
+}
+
+
+.l-c {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+}
+/*垂直水平居中对齐*/
+.l-c-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

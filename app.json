@@ -1,13 +1,35 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/list/list",
     "pages/logs/logs",
-    "pages/menus/menus"
+    "pages/menus/menus",
+    "pages/setbooks/setbooks"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor":"#2e6e86",
+    "navigationBarBackgroundColor":"#ffffff",
     "navigationBarTitleText": "今日菜单",
     "navigationBarTextStyle":"black"
+  } ,
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/icon_home.png",
+        "selectedIconPath": "/images/icon_home_HL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "iconPath": "/images/icon_component.png",
+        "selectedIconPath": "/images/icon_component_HL.png",
+        "text": "食堂"
+      }
+    ]
   }
 }

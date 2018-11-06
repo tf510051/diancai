@@ -1,10 +1,61 @@
 /**app.wxss**/
+
 .container {
-  height: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+page {
+  background-color: #fbf9fe;
+}
+
+.green {
+  color: #09bb07;
+}
+
+.red {
+  color: #f76260;
+}
+
+.blue {
+  color: #10aeff;
+}
+
+.yellow {
+  color: #ffbe00;
+}
+
+.gray {
+  color: #c9c9c9;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.bc_green {
+  background-color: #09bb07;
+}
+
+.bc_red {
+  background-color: #f76260;
+}
+
+.bc_blue {
+  background-color: #10aeff;
+}
+
+.bc_yellow {
+  background-color: #ffbe00;
+}
+
+.bc_gray {
+  background-color: #c9c9c9;
+}
+
+.tc {
+  text-align: center;
+}
