@@ -1,0 +1,8 @@
+<!--pages/setbooks/setbooks.wxml-->
+<checkbox-group bindchange="checkboxChange" >
+       <label  wx:for="{{cartArr}}">
+           <checkbox value="{{index}}"></checkbox>
+           <view>{{item.msg}}</view>
+           <!-- 其他布局代码 -->    
+       </label>   
+   </checkbox-group>
