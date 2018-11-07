@@ -57,7 +57,7 @@ Page({
       success(res) {
         var message = res.data.message;
         let list = res.data.data;
-        console.log(message);
+       // console.log(message);
         if (message == '1') {
           list.forEach((item) => {
             // var array = wx.arrayBufferToBase64(item.pic);           

@@ -18,7 +18,7 @@ Page({
   },
   getUser(){
  var user= wx.getStorageSync("user");
- console.log(user);
+ //console.log(user);
  //用户openid判断，如果是指定账号才可以修改设置
 //     if (user.openid && user.openid =='oGPlc5dgXQq8bQFCqc5HtPftODag'){
 //       this.setData({

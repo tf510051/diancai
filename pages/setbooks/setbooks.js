@@ -7,7 +7,7 @@ Page({
   data: {
     canteenid: '',
     BookList: [],
-    ids: ['aaa']
+    ids: []
   },
   checkboxChange: function(e) {
     // var selectlist = e.detail.value;
