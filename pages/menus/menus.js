@@ -53,6 +53,7 @@ Page({
    */
   onLoad: function (options) { 
     var id = options.id;
+  
     this.getProList(id);
 
   },
@@ -68,10 +69,11 @@ Page({
       success(res) {
         var message = res.data.message;
         let list=res.data.data;
+       // console.log(list);
         if (message=='1'){
           list.forEach((item) => {           
-            // var array = wx.arrayBufferToBase64(item.pic);           
-            // var base64 = wx.base64ToArrayBuffer(array); 
+            var array = wx.arrayBufferToBase64(item.pic);           
+            var base64 = wx.base64ToArrayBuffer(array); 
             item.pic = 'data:image/png;base64,' + item.pic
           })
         }        

@@ -1,14 +1,14 @@
 <!--pages/list/list.wxml-->
 <view class=" index-nav">
   <view class='pro-item' wx:for="{{CanTeenList}}" wx:key="item.id">
-    <view catchtap="go" data-index="{{index}}" data-id="{{item.id}}">
+    <view bindtap="go" data-index="{{index}}" data-id="{{item.id}}">
 
       <view class='pro-body'>
       <view class='pro-left'> 
       <view class='pro-title'>{{item.name}}</view>
         <view class='pro-desc'>{{item.org}}</view>
         </view>
-        <button  class='pro-button' wx:if="{{canEidt}}" catchtap="setCookBook"> 设置 </button>
+        <button  class='pro-button' wx:if="{{canEidt}}" data-index="{{index}}" data-id="{{item.id}}" catchtap="setCookBook"> 设置 </button>
 
       </view>
     </view>

@@ -1,8 +1,9 @@
 <!--pages/setbooks/setbooks.wxml-->
-<checkbox-group bindchange="checkboxChange" >
-       <label  wx:for="{{cartArr}}">
-           <checkbox value="{{index}}"></checkbox>
-           <view>{{item.msg}}</view>
+<checkbox-group bindchange="checkboxChange"   data-index="{{index}}">
+       <label  wx:for="{{BookList}}">
+           <checkbox value="{{item.id}}"></checkbox>
+           <view>{{item.name}}</view>
            <!-- 其他布局代码 -->    
        </label>   
    </checkbox-group>
+   <button type='submit' bindtap='sublist' >提交</button>

@@ -12,11 +12,11 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if(res.code){
-          console.log(res.code)
+         // console.log(res.code)
         }
         var d = that.globalData;//这里存储了appid、secret、token串  
-        console.log(res.d);
-        var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+        // var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+        var l = 'https://gwzs.hn.189.cn/union/wexin/getUserInfo?appid=' + d.appid + '&js_code=' + res.code + '&grant_type=authorization_code';
         console.log(l)
         wx.request({
           url: l,
@@ -24,6 +24,7 @@ App({
           method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
           // header: {}, // 设置请求的 header  
           success: function (res) {
+            console.log(res.data);
             var obj = {};
             //console.log(res.data);
             obj.openid = res.data.openid;

@@ -17,9 +17,19 @@ Page({
     this.getCanTeenList();
   },
   getUser(){
+ var user= wx.getStorageSync("user");
+ console.log(user);
+ //用户openid判断，如果是指定账号才可以修改设置
+//     if (user.openid && user.openid =='oGPlc5dgXQq8bQFCqc5HtPftODag'){
+//       this.setData({
+//         canEidt: true
+//       })
+//  }
     this.setData({
       canEidt: true
     })
+
+   
   },
 
   getCanTeenList: function () {
@@ -55,12 +65,15 @@ Page({
     })
   },
   setCookBook: function (event) {    
-    var list = this.data.CanTeenList;   
-    var id = event.currentTarget.dataset.id;
+    var list = this.data.CanTeenList;
+    var id = event.currentTarget.dataset.id; 
     wx.navigateTo({
       url: '../setbooks/setbooks?id=' + id
-    }) 
-    
+    })     
+  },
+
+  subList:function(event){
+
   },
 
   /**
