@@ -1,6 +1,5 @@
 // pages/setbooks/setbooks.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -33,6 +32,7 @@ Page({
   },
   getCanteenBookList: function(canteenid) {
     var self = this;
+    console.log('https://gwzs.hn.189.cn/union/cookbook/canteen/',canteenid);
     wx.request({
       url: 'https://gwzs.hn.189.cn/union/cookbook/canteen/' + canteenid,
       method: 'GET',
@@ -41,7 +41,7 @@ Page({
       },
       success(res) {
         var result = res.data.result;
-        console.log(res.data);
+       console.log(res.data);
         let list = res.data.data;
         if (result == '0000') {
           self.setData({
@@ -66,11 +66,17 @@ Page({
       },
       success(res) {
         console.log(res.data);
-        let message = res.data.message;
-        if (message && message == '新增当日菜肴信息成功') {
-          wx.showToast({
-            title: '新增成功',
-            duration: 2000
+        let result = res.data.result;
+        if (result && result == '0000') {
+          // wx.showToast({
+          //   title: '新增成功',
+          //   duration: 2000
+          // });
+          var canteenid = self.data.canteenid
+          wx.redirectTo({
+            url: '../menus/menus?id=' +canteenid
+           
+            // url: '../index/index'
           })
         }
       }

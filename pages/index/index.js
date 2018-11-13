@@ -3,9 +3,8 @@
 const app = getApp()
 
 Page({
-  data: {   
-    proList: [],
-
+  data: {  
+    proList: [],  
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -14,8 +13,8 @@ Page({
   //事件处理函数
   
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
+    if (app.globalData.userInfo) {     
+      this.setData({      
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
@@ -41,7 +40,13 @@ Page({
           })
         }
       })
-    }
+    }    
+    
+    // var user = wx.getStorageSync("user");  
+    // this.setData({
+    //  myid:user.openid
+    // })
+    // console.log('bb:', this.data.myid);
 
     this.getProList();
   },
@@ -55,30 +60,30 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        var message = res.data.message;
-        let list = res.data.data;
-       // console.log(message);
-        if (message == '1') {
-          list.forEach((item) => {
+       // console.log(res.data); 
+        if (res.data.result && res.data.result=='0000'){
+        var list = res.data.data;
+       // console.log(message);      
+        list.forEach((item) => {
             // var array = wx.arrayBufferToBase64(item.pic);           
             // var base64 = wx.base64ToArrayBuffer(array); 
-            item.pic = 'data:image/png;base64,' + item.pic
+            item.pic = 'https://gwzs.hn.189.cn/union/' + item.pic
           })
         }
-
+       
+       
         self.setData({
-          proList: res.data.data
+          proList: res.data.data,         
         })
       }
     })
   },
   getUserInfo: function (e) {
-    //console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
+    //console.log(e)  
+    app.globalData.userInfo = e.detail.userInfo   
+    this.setData({    
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      hasUserInfo: true     
     })
   }
-
 })

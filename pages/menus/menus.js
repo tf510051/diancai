@@ -4,8 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canteenid:'',
-    proList:[],
+    canteenid: '',
+    proList: [],
     imgUrls: [
       '/images/sw1.jpg',
       '/images/sw2.jpg',
@@ -22,7 +22,7 @@ Page({
     //默认
     current: 0,
 
-    
+
 
     // imageLoad: function (e) {//获取图片真实宽度  
     //   var imgwidth = e.detail.width,
@@ -41,7 +41,7 @@ Page({
     //     imgheights: imgheights
     //   })
     // },
-    bindchange: function () {
+    bindchange: function() {
       //  console.log(e.detail.current)
       // this.setData({ current: e.detail.current })
     }
@@ -51,36 +51,35 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) { 
+  onLoad: function(options) {
     var id = options.id;
-  
     this.getProList(id);
 
   },
-  getProList:function(id){
-    var self=this;
+  getProList: function(id) {
+    var self = this;
 
     wx.request({
-      url: 'https://gwzs.hn.189.cn/union/cookbook/today/canteen/'+id, 
-      method:'GET',     
+      url: 'https://gwzs.hn.189.cn/union/cookbook/today/canteen/' + id,
+      method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        var message = res.data.message;
-        let list=res.data.data;
-       // console.log(list);
-        if (message=='1'){
-          list.forEach((item) => {           
-            var array = wx.arrayBufferToBase64(item.pic);           
-            var base64 = wx.base64ToArrayBuffer(array); 
-            item.pic = 'data:image/png;base64,' + item.pic
+        var result = res.data.result;
+        var list = res.data.data;
+        console.log(list);
+        if (result && result == '0000') {
+          list.forEach((item) => {
+            // var array = wx.arrayBufferToBase64(item.pic);           
+            // var base64 = wx.base64ToArrayBuffer(array); 
+            item.pic = 'https://gwzs.hn.189.cn/union/' + item.pic
+          });
+
+          self.setData({
+            proList: res.data.data
           })
-        }        
-        
-        self.setData({
-          proList:res.data.data
-        })
+        }
 
       }
     })
@@ -89,49 +88,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

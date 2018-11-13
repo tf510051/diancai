@@ -24,16 +24,15 @@ App({
           method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
           // header: {}, // 设置请求的 header  
           success: function (res) {
-           // console.log(res.data);
+            console.log(JSON.stringify(res.data));           
             var obj = {};
             //console.log(res.data);
             obj.openid = res.data.openid;
-            obj.session_key = res.data.session_key;
-            //console.log(obj);
+            obj.session_key = res.data.session_key; 
+            obj.umask = res.data.umask;     
             wx.setStorageSync('user', obj);//存储openid  
           }
         });
-
       }
     })
     // 获取用户信息
@@ -59,6 +58,6 @@ App({
   globalData: {
     userInfo: null,
     appid: 'wxa7f9d14751c8860c',//appid需自己提供
-    secret: 'cfa2b6b14fe8d1fde34ca17b8df73280',//secret需自己提供
+    secret: '6747f1fbec876b8b68bc6a12e465f94c',//secret需自己提供
   }
 })

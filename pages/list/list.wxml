@@ -1,5 +1,6 @@
 <!--pages/list/list.wxml-->
 <view class=" index-nav">
+ 
   <view class='pro-item' wx:for="{{CanTeenList}}" wx:key="item.id">
     <view bindtap="go" data-index="{{index}}" data-id="{{item.id}}">
 
@@ -13,5 +14,5 @@
       </view>
     </view>
   </view>
-
+ 
 </view>
