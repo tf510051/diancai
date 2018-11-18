@@ -54,12 +54,7 @@ Page({
             if (mode == 'rectangle') {
               //console.log("crop callback:" + res);
               that.hideCropper() //隐藏，我在项目里是点击完成就上传，所以如果回调是上传，那么隐藏掉就行了，不用previewImage
-              // wx.showToast({
-              //   title: '正在上传...',
-              //   icon: 'loading',
-              //   mask: true,
-              //   duration: 10000
-              // }) 
+              
               wx.showLoading({
                 title: '转换中'
               });
@@ -67,22 +62,42 @@ Page({
               wx.getFileSystemManager().readFile({
                 filePath: res, //选择图片返回的相对路径
                 encoding: 'base64', //编码格式
-                success: res => { //成功的回调
-                  
-                  console.log('data:image/png;base64,' + res.data);
+                success: res => { //成功的回调                  
+                 console.log('data:image/png;base64,' + res.data);
                   wx.hideLoading();
-                  //2 开始上传压缩后图片
-
+                  //2 开始上传压缩后图片 
                 },
                 fail: function(res) {
-                  //wx.hideLoading();
+                  wx.hideLoading();
                   console.log('fail');
                 },
                 complete: function(res) {
-                  //console.log('complete');
-                 // wx.hideLoading()
+                  console.log('complete');
+                 wx.hideLoading()
+                }
+              });
+
+              wx.uploadFile({
+                url: 'https://...',      //此处换上你的接口地址
+                filePath: tempFilePaths[0],
+                name: 'img',
+                header: {
+                  "Content-Type": "multipart/form-data",
+                  'accept': 'application/json',               
+                },
+                formData: {
+                  'user': 'test'  //其他额外的formdata，可不写
+                },
+                success: function (res) {
+                  var data = res.data;
+                  console.log('data');
+                },
+                fail: function (res) {
+                  console.log('fail');
                 }
               })
+
+
 
 
               // wx.previewImage({
