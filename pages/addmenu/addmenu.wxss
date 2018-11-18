@@ -1,0 +1,3 @@
+/* pages/addmenu/addmenu.wxss */
+/**index.wxss**/
+@import "/welCropper/welCropper.wxss";

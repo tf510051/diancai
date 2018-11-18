@@ -4,7 +4,8 @@
     "pages/list/list",
     "pages/logs/logs",
     "pages/menus/menus",
-    "pages/setbooks/setbooks"
+    "pages/setbooks/setbooks",
+    "pages/addmenu/addmenu"
   ],
   "window":{
     "backgroundTextStyle":"light",

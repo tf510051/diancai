@@ -70,8 +70,6 @@ Page({
             item.pic = 'https://gwzs.hn.189.cn/union/' + item.pic
           })
         }
-       
-       
         self.setData({
           proList: res.data.data,         
         })
@@ -85,5 +83,36 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true     
     })
+  },
+
+  onShow: function() {
+    console.log('onshow started');
+    this.getProList();
+
+    // var self = this;
+    // wx.request({
+    //   url: 'https://gwzs.hn.189.cn/union/cookbook/today/canteen/1',
+    //   method: 'GET',
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success(res) {
+    //     // console.log(res.data); 
+    //     if (res.data.result && res.data.result == '0000') {
+    //       var list = res.data.data;
+    //       // console.log(message);      
+    //       list.forEach((item) => {
+    //         // var array = wx.arrayBufferToBase64(item.pic);           
+    //         // var base64 = wx.base64ToArrayBuffer(array); 
+    //         item.pic = 'https://gwzs.hn.189.cn/union/' + item.pic
+    //       })
+    //     }
+    //     self.setData({
+    //       proList: res.data.data,
+    //     })
+    //   }
+    // })
+
   }
+
 })

@@ -16,14 +16,17 @@ Page({
     this.getCanTeenList();
   },
   getUser() {
+    this.setData({
+            canEidt: true
+          });
     var user = wx.getStorageSync("user");
     console.log(user.umask);
     //用户openid判断，如果是指定账号才可以修改设置
-    if (user.umask && user.umask =='3'){
-          this.setData({
-            canEidt: true
-          })
-     }
+    // if (user.umask && user.umask =='3'){
+    //       this.setData({
+    //         canEidt: true
+    //       })
+    //  }
   },
 
   getCanTeenList: function() {

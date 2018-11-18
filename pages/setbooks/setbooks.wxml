@@ -1,9 +1,15 @@
 <!--pages/setbooks/setbooks.wxml-->
-<checkbox-group bindchange="checkboxChange"   data-index="{{index}}">
-       <label class='item-list' wx:for="{{BookList}}">
-           <checkbox value="{{item.id}}"></checkbox>
-           <view>{{item.name}}</view>
-           <!-- 其他布局代码 -->    
-       </label>   
-   </checkbox-group>
-   <button type='submit' bindtap='sublist' >提交</button>
+<button type='warn' bindtap='addnew'>新增菜单</button>
+<checkbox-group class='BookList' bindchange="checkboxChange" data-index="{{index}}">
+  <view class='items'>
+    <view class='item' wx:for="{{BookList}}" wx:key="{{index}}">
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+  
+        <checkbox value="{{item.id}}"> </checkbox>    {{item.name}}     
+      </view>
+       <view data-index="{{index}}" bindtap="delItem" class="inner del">删除</view>
+      <!-- 其他布局代码 -->
+    </view>
+  </view>
+</checkbox-group>
+<button type='submit' bindtap='sublist'>提交</button>
