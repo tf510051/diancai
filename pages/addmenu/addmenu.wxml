@@ -8,5 +8,49 @@
 <!-- <template is="welCropper" data="{{data:cropperData, cropperMovableItems:cropperMovableItems}}"></template> -->
  <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template> 
 
- <!-- 用于选择图片，传入cropper中 -->
-<button bindtap='selectTap' data-mode='rectangle'>点击上传图片</button>
+<view class="question-form">
+ <!-- 问题标题区域  -->
+  <view class="question-title-wrap">
+    <!-- 标题输入框 -->
+    <input class="question-title" placeholder="请输入标题" maxlength="10" placeholder-style="color:#b3b3b3;font-size:18px;" bindinput="handleTitleInput" value='{{title}}'></input>
+    <!-- 标题输入字数统计 -->
+    <view class="title-input-counter">{{titleCount}}/10</view>
+  </view>
+
+  <!-- 问题正文区域  -->
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <!-- 多行输入框 -->
+        <input class="weui-textarea" placeholder="请输入类别。" maxlength="10" style="height: 12rem"placeholder-style="color:#b3b3b3;font-size:14px;" bindinput="handleContentInput" value='{{content}}'/>
+        <!-- 正文输入字数统计 -->
+        <view class="weui-textarea-counter">{{contentCount}}/10</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="question-images-area">
+
+    <!-- 添加图片按钮  -->
+    <view class="question-images-tool">
+      <button type="default" size="mini" bindtap="selectTap" data-mode='rectangle' wx:if="{{images.length < 1}}">添加图片</button>
+    </view>
+
+    <!-- 图片缩略图  -->
+    <view class="question-images">
+      <block wx:for="{{images}}" wx:key="{{index}}">
+        <view class="q-image-wrap">
+          <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+          <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <!-- 提交表单按钮  -->
+  <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+
+</view>
+
+
