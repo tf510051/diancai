@@ -10,9 +10,9 @@
   </view>
  
 
-  <view class='pro-item' wx:for="{{proList}}" wx:key="{{index}}">
+  <view class='pro-item' wx:for="{{proList}}"  wx:key="{{index}}">
    
-    <image class='pro-logo' src='{{item.pic}}'></image>
+    <image class='pro-logo' src='{{item.pic}}' data-src="{{item.pic}}" bindtap="handleImagePreview"></image>
     <view class='pro-body'>
       <view class='pro-title'>{{item.name}}</view>
       <text class='pro-desc'>{{item.type}} </text>
